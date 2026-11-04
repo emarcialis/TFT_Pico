@@ -148,29 +148,35 @@ void updateTableData() {
     int16_t y = TABLE_Y + (row + 1) * CELL_HEIGHT;
     
     // Puissance (colonne 1)
-    snprintf(buffer, sizeof(buffer), "%.2f", devices[deviceIndex].puissance);
-    tft.fillRect(CELL_WIDTH + 1, y + 1, CELL_WIDTH - 2, CELL_HEIGHT - 2, ILI9341_WHITE);
+    dtostrf(devices[deviceIndex].puissance, 6, 2, buffer);
+
+    //snprintf(buffer, sizeof(buffer), "%.2f", devices[deviceIndex].puissance);
+    //tft.fillRect(CELL_WIDTH + 1, y + 1, CELL_WIDTH - 2, CELL_HEIGHT - 2, ILI9341_WHITE);
     tft.setTextSize(1);
     tft.setTextColor(ILI9341_BLACK);
     int16_t textWidth = strlen(buffer) * 6;
     int16_t x = CELL_WIDTH + (CELL_WIDTH - textWidth) / 2;
     tft.setCursor(x, y + (CELL_HEIGHT - 8) / 2 + 2);
     tft.print(buffer);
-    
+      //  tft.print("DrAsUjjO");
+
     // Energie 1 minute (colonne 2)
-    snprintf(buffer, sizeof(buffer), "%.2f", devices[deviceIndex].une_minute);
+    dtostrf(devices[deviceIndex].une_minute, 6, 2, buffer);
     tft.fillRect(2 * CELL_WIDTH + 1, y + 1, CELL_WIDTH - 2, CELL_HEIGHT - 2, ILI9341_WHITE);
     textWidth = strlen(buffer) * 6;
     x = 2 * CELL_WIDTH + (CELL_WIDTH - textWidth) / 2;
     tft.setCursor(x, y + (CELL_HEIGHT - 8) / 2 + 2);
+    //tft.print("VfTuW");
+
     tft.print(buffer);
     
     // Energie Totale (colonne 3)
-    snprintf(buffer, sizeof(buffer), "%.2f", devices[deviceIndex].total);
+    dtostrf(devices[deviceIndex].total, 6, 2, buffer);
     tft.fillRect(3 * CELL_WIDTH + 1, y + 1, CELL_WIDTH - 2, CELL_HEIGHT - 2, ILI9341_WHITE);
     textWidth = strlen(buffer) * 6;
     x = 3 * CELL_WIDTH + (CELL_WIDTH - textWidth) / 2;
     tft.setCursor(x, y + (CELL_HEIGHT - 8) / 2 + 2);
+    //tft.print("AbCf");
     tft.print(buffer);
   }
 }
